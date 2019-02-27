@@ -7,8 +7,6 @@ read envFile
 echo "DB Container Name"
 read container
 
-sqlFile=blablablalb/bla.sql.sql
-
 export $(grep -v '^#' $envFile | xargs)
 
 if [ "${sqlFile: -2}" == "gz" ]
