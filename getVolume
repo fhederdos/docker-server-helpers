@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+#check if there is a projectname
+v=$1
+if [[ -z $v ]]; then
+	echo "no volume found - use like"
+	echo "# getVolume [volumename]"
+	echo "you get all volumes by"
+	echo "# docker volume ls"
+
+fi
+
+docker run --rm -v $v:/$v busybox sh -c "tar -cOzf - /$v" > $v.tar.gz

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+dockerVolumes=(
+	docker_typo3temp
+)
+
+backupPath=~/temp
+
+
+for d in ${dockerVolumes[*]}; do
+	docker run --rm -v $d:/$d busybox sh -c "tar -cOzf - /$d" > $backupPath/volume-$d.tar.gz
+done
